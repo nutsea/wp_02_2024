@@ -180,7 +180,7 @@ async def handle_text(message: types.Message):
               
               with connection.cursor() as cursor:
                 cursor.execute(
-                    f"""UPDATE orders SET status = {message.text} WHERE track = '{treknom}'"""
+                    f"""UPDATE orders SET status = {status} WHERE track = '{trak}'"""
                 )
         except:
           with connection.cursor() as cursor:
@@ -191,11 +191,11 @@ async def handle_text(message: types.Message):
 
 
         
-        kb_change_trak = types.InlineKeyboardMarkup(row_width=1)
-        k3 = types.InlineKeyboardButton(text="НАЗАД",callback_data="back") 
-        kb_change_trak.add(k3)
-        await bot.send_message(message.chat.id, "Успешно добавлен трек номер",reply_markup=kb_change_trak)
-        variable.set_action(message.chat.id, 0)
+      kb_change_trak = types.InlineKeyboardMarkup(row_width=1)
+      k3 = types.InlineKeyboardButton(text="НАЗАД",callback_data="back") 
+      kb_change_trak.add(k3)
+      await bot.send_message(message.chat.id, "Успешно добавлен трек номер",reply_markup=kb_change_trak)
+      variable.set_action(message.chat.id, 0)
 
     except:
       
