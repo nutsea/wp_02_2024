@@ -6,7 +6,7 @@ import requests
 from aiogram.types import InputMediaPhoto
 import asyncio
 from aiogram import Bot, Dispatcher, types
-from aiogram.enums import ParseMode
+from aiogram.types import ParseMode
 from aiogram import executor
 import time
 from datetime import datetime 
