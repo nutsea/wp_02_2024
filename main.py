@@ -1,4 +1,3 @@
-
 import psycopg2
 from config import host, user, password, db_name
 import time
@@ -26,7 +25,6 @@ bot = Bot(token=API_TOKEN)
 dp = Dispatcher(bot)
 @dp.message_handler(commands=['start'])
 async def send_welcome(message: types.Message):
-  global mess
   k = types.InlineKeyboardMarkup()
   k1 = types.InlineKeyboardButton(text="WEB APP", web_app=types.WebAppInfo(url="https://main--dancing-cheesecake-968061.netlify.app"))
   k.add(k1)
@@ -67,7 +65,7 @@ async def print_all_commands(call: types.CallbackQuery):
     k1 = types.InlineKeyboardButton(text="СМЕНА",callback_data="cc")
     k2 = types.InlineKeyboardButton(text="НАЗАД",callback_data="back") 
     kb_change_curs.add(k1,k2)
-    await bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.mess.message_id,text=f"Актуальный курс - {qe}",reply_markup=kb_change_curs)
+    await bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id,text=f"Актуальный курс - {qe}",reply_markup=kb_change_curs)
     variable.set_action(call.message.chat.id, 0)
 
   if call.data == "trek":
@@ -292,7 +290,4 @@ async def handle_text(message: types.Message):
       variable.set_action(message.chat.id, 5)
 
 from aiogram import executor
-executor.start_polling(dp, skip_updates=True) 
-
-
-
+executor.start_polling(dp, skip_updates=True)
