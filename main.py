@@ -195,8 +195,8 @@ async def handle_text(message: types.Message):
       await bot.send_message(message.chat.id, "Успешно добавлен трек номер",reply_markup=kb_change_trak)
       variable.set_action(message.chat.id, 0)
 
-    except:
-      
+    except Exception as e:
+      print(f"Error: {e}")
       kb_change_trak = types.InlineKeyboardMarkup(row_width=1)
       k3 = types.InlineKeyboardButton(text="НАЗАД",callback_data="back") 
       kb_change_trak.add(k3)
